@@ -10,6 +10,7 @@ post '/users' do
 end
 
 get '/signup' do
+  redirect '/' if session[:user_id]
   erb :signup
 end
 

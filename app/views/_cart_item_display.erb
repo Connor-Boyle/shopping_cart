@@ -1,14 +1,17 @@
-
-<% @cart.each do |item, quantity| %>
-    <div class="col-sm-4 col-lg-4 col-md-4">
-        <div class="thumbnail">
-            <img src="http://placehold.it/320x150" alt="">
-            <div class="caption">
-                <h4 class="pull-right">$<%= (item.price) %></h4>
-                <h4><a href="/item/<%= item.id %>"><%= item.name %></a>
-                </h4>
-                <p><%= item.description %></p>
+<% if @cart %>
+    <% @cart.each do |item, quantity| %>
+        <div class="col-sm-4 col-lg-4 col-md-4">
+            <div class="thumbnail">
+                <img src="http://placehold.it/320x150" alt="">
+                <div class="caption">
+                    <h4 class="pull-right">$<%= (item.price) %></h4>
+                    <h4><a href="/item/<%= item.id %>"><%= item.name %></a>
+                    </h4>
+                    <p><%= item.description %></p>
+                </div>
             </div>
         </div>
-    </div>
+    <% end %>
+<% else %>
+    <p style="text-align: center;"> Your cart is empty. Go buy some shit, and then come and talk to me.</p>
 <% end %>

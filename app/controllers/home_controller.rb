@@ -7,7 +7,8 @@
 # end
 
 get '/' do
-  user = User.find_by_id(session[:user_id])
+  redirect '/signup' unless session[:user_id]
+  @user = User.find_by_id(session[:user_id])
   @products = Product.all
   erb :index
 end

@@ -3,6 +3,7 @@ before '/cart' do
 end
 
 get '/cart' do
+  @user = User.find_by_id(session[:user_id])
   @cart = session[:order]
   # @cart << LineItem.find_by_order_id(session[:order_id])
   erb :cart
