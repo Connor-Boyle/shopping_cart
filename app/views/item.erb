@@ -9,9 +9,11 @@
             <div class="thumbnail">
                 <img class="img-responsive" src="http://placehold.it/800x300" alt="">
                 <div class="caption-full">
-                    <a><form action="/cart/<%= @this_item.id %>" method="post">
-                        <input type="submit" value="Buy" class="btn btn-success"></form></a>
+
                     <h4 class="pull-right">$<%= @this_item.price %></h4>
+                    <a><form action="/cart" method="post">
+                        <input type="hidden" id="item" name="order[item]" value="<%= @this_item.id %>" />
+                        <input type="submit" value="Buy" class="btn btn-success pull-right"></form></a>
                     <h4><a href="#"><%= @this_item.name %></a>
                     </h4>
                     <p> <%= @this_item.description %></p>
