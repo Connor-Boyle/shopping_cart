@@ -19,7 +19,6 @@ post '/session' do
   if user
     if user.password == params[:user][:password]
       session[:user_id] = user.id
-      session[:order] = {}
       redirect '/'
     end
   end

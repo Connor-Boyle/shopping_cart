@@ -8,9 +8,15 @@
 
 get '/' do
   redirect '/signup' unless session[:user_id]
-  @user = User.find_by_id(session[:user_id])
-  @products = Product.all
-  erb :index
+  puts session.inspect
+  if  User.find_by_id(session[:user_id])
+    @user = User.find_by_id(session[:user_id])
+    @products = Product.all
+    erb :index
+  else
+  @error = "No User with this ID"
+   erb :error
+  end
 end
 
 get '/login' do
