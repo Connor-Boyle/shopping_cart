@@ -8,8 +8,23 @@ get '/cart' do
     @order = Order.where(user_id: session[:user_id], filled_at: nil).first
     @cart = []
     @cart << LineItem.find_by_order_id(@order.id)
+    p @cart
+  else
+    @cart = []
+    p @cart
   end
   erb :cart
+end
+
+patch '/cart' do
+  @order = Order.find_by_id(params[:order][:id])
+  @order.filled_at = true
+  @cart = []
+  @cart << LineItem.find_by_id(params[:order][:id])
+  @cart.each do | item |
+    item.destroy
+  end
+  redirect '/cart'
 end
 
 post '/cart' do

@@ -7,6 +7,9 @@
                     <h4 class="pull-right">$<%= (item.price_at_time_of_selection) %></h4>
                     <h4><%= Product.find_by_id(item.product_id).name %></h4>
                     <p><%= Product.find_by_id(item.product_id).description %></p>
+                    <a><form action="/item/<%= item.id %>" method="post">
+                        <input type="hidden" id="item" name="_method" value="delete" />
+                        <input type="submit" value="Remove from cart" class="btn btn-warning pull-right"></form></a>
                 </div>
             </div>
         </div>

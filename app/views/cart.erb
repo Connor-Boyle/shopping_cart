@@ -2,10 +2,14 @@
 <div class="container">
     <div class="row">
         <div class="col-md-9">
-                <div class="row">
-                    <%= partial :cart_item_display %>
-                </div>
-            </div>
+        <% if @cart.length != nil %>
+            <a><form action="/cart" method="patch">
+            <input type="hidden" id="item" name="order[id]" value="<%= @cart[0].order_id %>" />
+            <input type="submit" value="Send me all this shit!" class="btn btn-success pull-right"></form></a>
+        <% end %>
+        <div class="row">
+            <%= partial :cart_item_display %>
+        </div>
         </div>
     </div>
 </div>
